@@ -26,14 +26,12 @@
 			      <configuration>
                     <archive>
                         <manifest>
-                        	<mainClass>runner.MainCommandLine</mainClass>
+                        	<mainClass>runner.Runner</mainClass>
                         </manifest>
                     </archive>
 			        <descriptorRefs>
 			          <descriptorRef>jar-with-dependencies</descriptorRef>
 			        </descriptorRefs>
-					<finalName>AutoSubmit</finalName>
-     				<appendAssemblyId>false</appendAssemblyId>
 			      </configuration>
 			    </execution>
 			  </executions>
@@ -44,7 +42,6 @@
 			    <executions>
 			        <execution>
 			            <id>default-jar</id>
-			            <phase>none</phase>
 			        </execution>
 			    </executions>
 			</plugin>
