@@ -25,6 +25,7 @@ public class Runner {
 		StudentHandler csv = new StudentHandler(arguments.studentFile);
 		csv.execute();
 		CommandHandler ch = new CommandHandler(csv.getStudentClasses(), csv.getStudentPlacement());
+		arguments.outputDirectory.mkdirs();
 		CSVWriter sectionWriter = new CSVWriter(
 				new FileWriter(getLowestFile(new File(arguments.outputDirectory, "SectionOutput.csv"))));
 		CSVWriter gradeWriter = new CSVWriter(
@@ -35,6 +36,21 @@ public class Runner {
 		}
 		for (Command[] commands : ch.generateSectionCommands(year, arguments.firstRun)) {
 			sectionWriter.write(List.of(commands));
+		}
+	}
+
+	private static void checkArgs(Arguments arguments) {
+		if (!arguments.studentFile.canRead()) {
+			throw new IllegalArgumentException("Cannot read from file: " + arguments.studentFile);
+		}
+		if (!arguments.studentFile.toString().endsWith(".csv")) {
+			throw new IllegalArgumentException("Student file must be a csv: " + arguments.studentFile);
+		}
+		if (!arguments.outputDirectory.canWrite()) {
+			throw new IllegalArgumentException("Cannot write to directory file: " + arguments.studentFile);
+		}
+		if (arguments.year < 2020 || arguments.year > 2100) {
+			throw new IllegalArgumentException("Year: " + arguments.year + " is invalid must be 2020 > < 2100");
 		}
 	}
 
