@@ -1,4 +1,4 @@
-package com.newmark.StudentLisManager.handlers;
+package com.newmark.StudentListManager.handlers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,9 +13,9 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import com.newmark.SlackHelperBot.model.Command;
-import com.newmark.SlackHelperBot.model.OfferedClasses;
-import com.newmark.SlackHelperBot.model.YearTrack;
+import com.newmark.StudentListManager.model.Command;
+import com.newmark.StudentListManager.model.OfferedClasses;
+import com.newmark.StudentListManager.model.YearTrack;
 
 public class CommandHandler {
 	Map<OfferedClasses, SortedSet<String>> classList = new EnumMap<>(OfferedClasses.class);

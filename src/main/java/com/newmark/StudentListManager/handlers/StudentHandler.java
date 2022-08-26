@@ -1,4 +1,4 @@
-package com.newmark.SlackHelperBot.handlers;
+package com.newmark.StudentListManager.handlers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,9 +12,10 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import com.newmark.SlackHelperBot.model.CSVStudent;
-import com.newmark.SlackHelperBot.model.OfferedClasses;
-import com.newmark.SlackHelperBot.model.YearTrack;
+import com.newmark.StudentListManager.handlers.CSVReader;
+import com.newmark.StudentListManager.model.CSVStudent;
+import com.newmark.StudentListManager.model.OfferedClasses;
+import com.newmark.StudentListManager.model.YearTrack;
 
 public class StudentHandler {
 	private final Reader csvReader;

@@ -1,4 +1,4 @@
-package com.newmark.SlackHelperBot.model;
+package com.newmark.StudentListManager.model;
 
 public class CommandEnum {
 	static enum Command {

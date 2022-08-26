@@ -1,4 +1,4 @@
-package com.newmark.SlackHelperBot.handlers;
+package com.newmark.StudentListManager.handlers;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -9,8 +9,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import com.newmark.SlackHelperBot.model.CSVStudent;
-import com.newmark.SlackHelperBot.model.OfferedClasses;
+import com.newmark.StudentListManager.model.CSVStudent;
+import com.newmark.StudentListManager.model.OfferedClasses;
 
 public class CSVReader implements Iterable<CSVStudent>, Iterator<CSVStudent> {
 	private final Iterator<CSVRecord> csvRecordIterator;

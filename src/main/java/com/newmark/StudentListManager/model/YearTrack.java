@@ -1,7 +1,7 @@
-package com.newmark.SlackHelperBot.model;
+package com.newmark.StudentListManager.model;
 
-import static com.newmark.SlackHelperBot.model.Track.AI;
-import static com.newmark.SlackHelperBot.model.Track.DS;
+import static com.newmark.StudentListManager.model.Track.AI;
+import static com.newmark.StudentListManager.model.Track.DS;
 
 public enum YearTrack {
 

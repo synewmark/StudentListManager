@@ -1,6 +1,8 @@
-package com.newmark.SlackHelperBot.model;
+package com.newmark.StudentListManager.model;
 
 import java.util.Arrays;
+
+import com.newmark.StudentListManager.model.CommandEnum;
 
 public record Command(String command, String year, String section, String... args) {
 	public Command {

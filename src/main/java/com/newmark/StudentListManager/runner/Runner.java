@@ -1,4 +1,4 @@
-package com.newmark.SlackHelperBot.runner;
+package com.newmark.StudentListManager.runner;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.google.devtools.common.options.OptionsParser;
-import com.newmark.SlackHelperBot.handlers.CSVWriter;
-import com.newmark.SlackHelperBot.handlers.StudentHandler;
-import com.newmark.SlackHelperBot.model.Command;
-import com.newmark.StudentLisManager.handlers.CommandHandler;
+import com.newmark.StudentListManager.handlers.CSVWriter;
+import com.newmark.StudentListManager.handlers.CommandHandler;
+import com.newmark.StudentListManager.handlers.StudentHandler;
+import com.newmark.StudentListManager.model.Command;
 
 public class Runner {
 	static Arguments arguments;
