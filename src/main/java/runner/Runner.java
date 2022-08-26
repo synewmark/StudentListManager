@@ -26,7 +26,9 @@ public class Runner {
 		StudentHandler csv = new StudentHandler(arguments.studentFile);
 		csv.execute();
 		CommandHandler ch = new CommandHandler(csv.getStudentClasses(), csv.getStudentPlacement());
-		arguments.outputDirectory.mkdirs();
+		if (arguments.outputDirectory != null) {
+			arguments.outputDirectory.mkdirs();
+		}
 		CSVWriter sectionWriter = new CSVWriter(
 				new FileWriter(getLowestFile(new File(arguments.outputDirectory, "SectionOutput.csv"))));
 		CSVWriter gradeWriter = new CSVWriter(
