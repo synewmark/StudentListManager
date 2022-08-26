@@ -57,7 +57,6 @@ public class CSVReader implements Iterable<CSVStudent>, Iterator<CSVStudent> {
 	}
 
 	private void ensureHeaderValsExist(List<String> headers) {
-		System.out.println(headers);
 		if (!headers.contains("Subject")) {
 			throw new IllegalArgumentException("Record does not contain header \"Subject\"");
 		}
