@@ -41,13 +41,13 @@ public class Runner {
 	}
 
 	private static void checkArgs(Arguments arguments) {
-		if (!arguments.studentFile.canRead()) {
+		if (arguments.studentFile == null || !arguments.studentFile.canRead()) {
 			throw new IllegalArgumentException("Cannot read from file: " + arguments.studentFile);
 		}
 		if (!arguments.studentFile.toString().endsWith(".csv")) {
 			throw new IllegalArgumentException("Student file must be a csv: " + arguments.studentFile);
 		}
-		if (!arguments.outputDirectory.canWrite()) {
+		if (arguments.outputDirectory != null && !arguments.outputDirectory.canWrite()) {
 			throw new IllegalArgumentException("Cannot write to directory file: " + arguments.studentFile);
 		}
 		if (arguments.year != -1 && arguments.year < 2020 || arguments.year > 2100) {
