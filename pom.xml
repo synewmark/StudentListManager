@@ -27,7 +27,7 @@
 			      <configuration>
                     <archive>
                         <manifest>
-                        	<mainClass>runner.Runner</mainClass>
+                        	<mainClass>com.newmark.StudentListManager.runner.Runner</mainClass>
                         </manifest>
                     </archive>
 			        <descriptorRefs>
