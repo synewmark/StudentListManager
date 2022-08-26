@@ -22,6 +22,7 @@ public class Runner {
 		OptionsParser parser = OptionsParser.newOptionsParser(Arguments.class);
 		parser.parseAndExitUponError(args);
 		arguments = parser.getOptions(Arguments.class);
+		checkArgs(arguments);
 		StudentHandler csv = new StudentHandler(arguments.studentFile);
 		csv.execute();
 		CommandHandler ch = new CommandHandler(csv.getStudentClasses(), csv.getStudentPlacement());
@@ -49,7 +50,7 @@ public class Runner {
 		if (!arguments.outputDirectory.canWrite()) {
 			throw new IllegalArgumentException("Cannot write to directory file: " + arguments.studentFile);
 		}
-		if (arguments.year < 2020 || arguments.year > 2100) {
+		if (arguments.year != -1 && arguments.year < 2020 || arguments.year > 2100) {
 			throw new IllegalArgumentException("Year: " + arguments.year + " is invalid must be 2020 > < 2100");
 		}
 	}
