@@ -11,7 +11,7 @@ import com.google.devtools.common.options.OptionsParsingException;
 public class Arguments extends OptionsBase {
 	@Option(name = "studentFile", abbrev = 'i', help = "Location of CSV file", defaultValue = "", converter = FileConverter.class)
 	public File studentFile;
-	@Option(name = "outputDirectory", help = "Directory to output file, optional", defaultValue = "", converter = FileConverter.class)
+	@Option(name = "outputDirectory", abbrev = 'o', help = "Directory to output file, optional", defaultValue = "", converter = FileConverter.class)
 	public File outputDirectory;
 	@Option(name = "year", abbrev = 'y', help = "Current year", defaultValue = "-1", converter = IntegerConverter.class)
 	public int year;
