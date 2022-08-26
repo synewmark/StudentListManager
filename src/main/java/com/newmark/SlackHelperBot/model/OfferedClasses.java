@@ -1,4 +1,4 @@
-package model;
+package com.newmark.SlackHelperBot.model;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

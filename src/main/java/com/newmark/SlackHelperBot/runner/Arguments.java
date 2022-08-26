@@ -1,4 +1,4 @@
-package runner;
+package com.newmark.SlackHelperBot.runner;
 
 import java.io.File;
 

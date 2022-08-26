@@ -1,4 +1,4 @@
-package handlers;
+package com.newmark.SlackHelperBot.handlers;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -7,7 +7,7 @@ import java.util.Collection;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
-import model.Command;
+import com.newmark.SlackHelperBot.model.Command;
 
 public class CSVWriter {
 	private final Writer writer;
