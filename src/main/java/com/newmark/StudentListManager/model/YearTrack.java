@@ -5,8 +5,8 @@ import static com.newmark.StudentListManager.model.Track.DS;
 
 public enum YearTrack {
 
-	FRESHMAN(1, null), SOPHMOREBA(2, null), SOPHMOREAI(2, AI), SOPHMOREDS(2, DS), JUNIORBA(3, null), JUNIORAI(3, AI),
-	JUNIORDS(3, DS), SENIORAI(4, AI), SENIORDS(4, DS);
+	FRESHMAN(1, null), SOPHMORE(2, null), JUNIORBA(3, null), JUNIORAI(3, AI), JUNIORDS(3, DS), SENIORAI(4, AI),
+	SENIORDS(4, DS);
 
 	public final int year;
 	public final Track track;
@@ -15,7 +15,7 @@ public enum YearTrack {
 	YearTrack(int year, Track track) {
 		this.year = year;
 		this.track = track;
-		if (this.toString().equalsIgnoreCase("Freshman")) {
+		if (this.toString().equalsIgnoreCase("Freshman") || this.toString().equalsIgnoreCase(("Sophmore"))) {
 			this.prefix = this.toString();
 		} else {
 			this.prefix = this.toString().substring(0, this.toString().length() - 2);
