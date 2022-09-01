@@ -1,5 +1,13 @@
 package com.newmark.StudentListManager.model;
 
+import static com.newmark.StudentListManager.model.YearTrack.FRESHMAN;
+import static com.newmark.StudentListManager.model.YearTrack.JUNIORAI;
+import static com.newmark.StudentListManager.model.YearTrack.JUNIORBA;
+import static com.newmark.StudentListManager.model.YearTrack.JUNIORDS;
+import static com.newmark.StudentListManager.model.YearTrack.SENIORAI;
+import static com.newmark.StudentListManager.model.YearTrack.SENIORDS;
+import static com.newmark.StudentListManager.model.YearTrack.SOPHMORE;
+
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,49 +25,36 @@ public enum OfferedClasses {
 		this.course = Integer.parseInt(this.toString().substring(3).replaceAll("\\D.*", ""));
 	}
 
-	static Map<YearTrack, OfferedClasses[]> containsRule = new LinkedHashMap<>();
-	static Map<YearTrack, OfferedClasses[]> doesNotContainRule = new LinkedHashMap<>();
+	static Map<YearTrack, StudentPlacement> rule = new LinkedHashMap<>();
 
 	static {
-		containsRule.put(YearTrack.FRESHMAN, new OfferedClasses[] { COM1300 });
+		// "c" is "registeredClasses" collection shorter name to make reading easier
+		rule.put(FRESHMAN, (c) -> (c.contains(COM1300)));
 
-		containsRule.put(YearTrack.SOPHMOREAI, new OfferedClasses[] { COM2545, COM3640, MAT2105 });
-		doesNotContainRule.put(YearTrack.SOPHMOREAI, new OfferedClasses[] { COM2113 });
+		rule.put(SOPHMORE, (c) -> (c.contains(COM2545)));
 
-		containsRule.put(YearTrack.SOPHMOREDS, new OfferedClasses[] { COM2545, COM2113 });
-		doesNotContainRule.put(YearTrack.SOPHMOREDS, new OfferedClasses[] { MAT2105, COM3640 });
+		rule.put(JUNIORDS, (c) -> (c.contains(COM2512) && c.contains(COM3820) && c.contains(COM3800)));
 
-		containsRule.put(YearTrack.SOPHMOREBA, new OfferedClasses[] { COM2545 });
+		rule.put(SENIORDS, (c) -> (c.contains(COM3563) && c.contains(COM3760)));
 
-		containsRule.put(YearTrack.SENIORAI, new OfferedClasses[] { COM4010 });
+		rule.put(JUNIORBA,
+				(c) -> (c.contains(COM3640) && c.contains(COM3760)) && (c.contains(COM3800) ^ c.contains(COM3820)));
 
-		containsRule.put(YearTrack.SENIORDS, new OfferedClasses[] { COM3563, COM3760 });
+		rule.put(JUNIORAI, (c) -> (c.contains(COM3760)) && (!c.contains(COM4010) && !c.contains(COM3563)));
 
-		containsRule.put(YearTrack.JUNIORAI, new OfferedClasses[] { COM3760 });
-		doesNotContainRule.put(YearTrack.JUNIORAI, new OfferedClasses[] { COM4010, COM3563 });
-
-		containsRule.put(YearTrack.JUNIORDS, new OfferedClasses[] { COM2512, COM3820 });
+		rule.put(SENIORAI, (c) -> (c.contains(COM4010)));
 	}
 
 	public static YearTrack determinePlacement(Collection<OfferedClasses> registeredClasses) {
-		outerloop: for (Entry<YearTrack, OfferedClasses[]> entry : containsRule.entrySet()) {
-			for (OfferedClasses course : entry.getValue()) {
-				if (!registeredClasses.contains(course)) {
-					continue outerloop;
-				}
+		for (Entry<YearTrack, StudentPlacement> entry : rule.entrySet()) {
+			if (entry.getValue().check(registeredClasses)) {
+				return entry.getKey();
 			}
-			for (OfferedClasses course : doesNotContainRule.getOrDefault(entry.getKey(), new OfferedClasses[0])) {
-				if (registeredClasses.contains(course)) {
-					continue outerloop;
-				}
-			}
-			return entry.getKey();
-		}
-		if (registeredClasses.contains(COM3640) && registeredClasses.contains(COM3760)
-				&& (registeredClasses.contains(COM3800) ^ registeredClasses.contains(COM3820))) {
-			return YearTrack.JUNIORBA;
-
 		}
 		return null;
+	}
+
+	private interface StudentPlacement {
+		public boolean check(Collection<OfferedClasses> registeredClasses);
 	}
 }
