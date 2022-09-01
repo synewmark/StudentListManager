@@ -28,6 +28,16 @@ public enum OfferedClasses {
 	static Map<YearTrack, StudentPlacement> rule = new LinkedHashMap<>();
 
 	static {
+		// Future implemenations should consider making it possible to accept this
+		// static block to be inserted at run time.
+		// Most (All?) of the tokens can be stripped and re-added with a static find and
+		// replace i.e.:
+		// "FRESHMAN: (contains(COM1300))" just requires:
+		// 1. Insertion of "rule.put(" in the beginning.
+		// 2. Replace of ":" with ", (c) ->"
+		// 3. Replace "contains" with "c.contains"
+		// 4. ");" added at the end
+
 		// "c" is "registeredClasses" collection shorter name to make reading easier
 		rule.put(FRESHMAN, (c) -> (c.contains(COM1300)));
 
