@@ -75,7 +75,7 @@ public class CommandHandler {
 			}
 			int i = 0;
 			Command[] commands;
-			if (firstExecution || pair.getKey().prefix.equals("SOPHMORE")) {
+			if (firstExecution || pair.getKey().prefix.equalsIgnoreCase("JUNIOR")) {
 				commands = new Command[2];
 				commands[i++] = new Command("CREATECHANNEL",
 						String.valueOf(year + YearTrack.yearsFromGraduating(pair.getKey())),
@@ -91,6 +91,7 @@ public class CommandHandler {
 	}
 
 	private boolean isYearOnly(YearTrack yearTrack) {
-		return (yearTrack == YearTrack.FRESHMAN || yearTrack.toString().endsWith("BA"));
+		return (yearTrack == YearTrack.FRESHMAN || yearTrack == YearTrack.SOPHMORE
+				|| yearTrack.toString().endsWith("BA"));
 	}
 }
