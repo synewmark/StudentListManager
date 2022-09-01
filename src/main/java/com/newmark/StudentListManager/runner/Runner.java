@@ -29,7 +29,7 @@ public class Runner {
 			arguments.outputDirectory.mkdirs();
 		}
 		CSVWriter sectionWriter = new CSVWriter(
-				new FileWriter(getLowestFile(new File(arguments.outputDirectory, "SectionOutput.csv"))));
+				new FileWriter(getLowestFile(new File(arguments.outputDirectory, "TrackOutput.csv"))));
 		CSVWriter gradeWriter = new CSVWriter(
 				new FileWriter(getLowestFile(new File(arguments.outputDirectory, "GradeOutput.csv"))));
 		int year = arguments.year == -1 ? Year.now().getValue() : arguments.year;
